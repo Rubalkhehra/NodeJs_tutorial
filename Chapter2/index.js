@@ -12,18 +12,20 @@ const products = data.products;
 
 const server = http.createServer((req, res) => {
   console.log(req.url,req.method);
-
-  if(req.url.startsWith('/product')){
-    const id = req.url.split('/')[2];
-    // +id means convert string into number
-    const product=products.find(p=>p.id==(+id));
-    console.log(product);
-    res.setHeader("Content-Type", "text/html");
-    let modified_index=index.replace('**title**',product.title).replace('**url**',product.thumbnail)
-    .replace('**price**',product.price)
-    .replace('**rating**',product.rating);
-    res.end(modified_index);
-  }
+  console.log(req.data);
+  console.log(typeof(req.url));
+  res.end();
+  // if(req.url.startsWith('/product')){
+  //   const id = req.url.split('/')[2];
+  //   // +id means convert string into number
+  //   const product=products.find(p=>p.id==(+id));
+  //   console.log(product);
+  //   res.setHeader("Content-Type", "text/html");
+  //   let modified_index=index.replace('**title**',product.title).replace('**url**',product.thumbnail)
+  //   .replace('**price**',product.price)
+  //   .replace('**rating**',product.rating);
+  //   res.end(modified_index);
+  // }
 
   switch(req.url){
     case '/':
